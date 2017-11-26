@@ -1,3 +1,4 @@
+const { join } = require('path');
 let slides = [];
 
 // Note (dk): temporal place here... move views out (views.js?)
