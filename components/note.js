@@ -1,4 +1,4 @@
-const html = require('choo/html');
+const html = require('bel');
 
 const Note = (children, emit) => {
     // Note (dk): notes can be turned into somekind of HOC

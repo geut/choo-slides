@@ -1,4 +1,4 @@
-const html = require('choo/html');
+const html = require('bel');
 const css = require('sheetify');
 
 const menuStyle = css`
