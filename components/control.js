@@ -17,11 +17,11 @@ let showGoto = false;
 
 const Control = (state, emit) => {
     const movefw = () => {
-        emit('choo-slides:fw');
+        emit(state.events.FORWARD);
     }
 
     const movebw = () => {
-        emit('choo-slides:bw');
+        emit(state.events.BACKWARD);
     }
 
     const toggleGoto = () => {
@@ -32,7 +32,7 @@ const Control = (state, emit) => {
     const gotoItem = (title, idx) => {
         const gotoSlide = () => {
             showGoto = false;
-            emit('choo-slides:goto', idx);
+            emit(state.events.GOTO, idx);
         }
         return html`
             <li onclick=${gotoSlide} class="lh-copy pa2 pointer">${title}</li>
