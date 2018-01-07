@@ -8,6 +8,8 @@ const Slide = children => (state, emit) => {
     emit(state.events.DOMTITLECHANGE, children.title);
     // defaults
     if (typeof children.centered === 'undefined') children.centered = true;
+    if (typeof children.vmiddle === 'undefined') children.vmiddle = false;
+    if (typeof children.paddings === 'undefined') children.paddings = true;
     const navigate = (e) => {
         switch (e.keyCode){
             case 32:
@@ -28,8 +30,8 @@ const Slide = children => (state, emit) => {
     return html`
             <body class='relative sans-serif' onkeydown=${navigate}>
                 <article class='vh-100 dt w-100 ${children.backgroundColor}'>
-                    <div class='dtc v-mid ${children.centered ? 'tc': ''} ${children.color} ph3 ph4-l'>
-                        ${children(state)}
+                    <div class='dtc ${children.vmiddle ? 'v-mid' : ''} ${children.centered ? 'tc': ''} ${children.color} ${children.paddings ? 'ph3 ph4-l' : ''}'>
+                        ${children(state, emit)}
                     </div>
                 </article>
                 ${Control(state, emit)}
