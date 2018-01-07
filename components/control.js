@@ -41,13 +41,13 @@ const Control = (state, emit) => {
 
     return html`
         <section class='${menuStyle} w-50 w-40-m w-auto-ns overflow-y-auto absolute tr bottom-1 right-2'>
-            <button onclick=${movebw} class='outline-transparent pointer grow-large bn no-underline bg-transparent hover-white inline-flex items-center pa3'>
+            <button onclick=${movebw} class='outline-transparent pointer bg-white-60 bn br--left br4 no-underline hover-white inline-flex items-center pa3'>
                 <span class='w1'>◀</span>
             </button>
-            <button onclick=${toggleGoto} class='outline-transparent pointer grow-large bn no-underline bg-transparent hover-white inline-flex items-center pa3'>
+            <button onclick=${toggleGoto} class='outline-transparent pointer bg-white-60 bn no-underline hover-white inline-flex items-center pa3'>
                 <span class='w1'>❖ </span>
             </button>
-            <button onclick=${movefw} class='outline-transparent pointer grow-large bn no-underline bg-transparent hover-white inline-flex items-center pa3'>
+            <button onclick=${movefw} class='outline-transparent pointer bg-white-60 bn br--right br4 no-underline hover-white inline-flex items-center pa3'>
                 <span class='w1 '>▶</span>
             </button>
             <aside class="overflow-x-hidden  menu ${ showGoto ? "menu--open" : ""} db-l w-100 tc mv0 f3 fw3 f5-l bg-black-80 white-90">
