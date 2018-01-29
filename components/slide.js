@@ -30,7 +30,7 @@ const Slide = children => (state, emit) => {
     return html`
             <body class='relative sans-serif' onkeydown=${navigate}>
                 <article class='vh-100 dt w-100 ${children.backgroundColor}'>
-                    <div class='dtc ${children.vmiddle ? 'v-mid' : ''} ${children.centered ? 'tc': ''} ${children.color} ${children.paddings ? 'ph3 ph4-l' : ''}'>
+                    <div class='${children.vmiddle ? 'dtc v-mid' : ''} ${children.centered ? 'tc': ''} ${children.color} ${children.paddings ? 'ph3 ph4-l' : ''}'>
                         ${children(state, emit)}
                     </div>
                 </article>
