@@ -1,87 +1,86 @@
-const assert = require('assert');
-const SlideShell = require('./components/slide');
-const SlideView = require('./views/slide');
-const NotFoundView = require('./views/404');
+const assert = require('assert')
+const SlideShell = require('./components/slide')
+const SlideView = require('./views/slide')
 
-module.exports = chooSlides;
+module.exports = chooSlides
 
 const events = exports.events = chooSlides.events = {
-    FORWARD: 'choo-slides:fw',
-    BACKWARD: 'choo-slides:bw',
-    GOTO: 'choo-slides:goto',
-    DEBUG: 'log:debug'
+  FORWARD: 'choo-slides:fw',
+  BACKWARD: 'choo-slides:bw',
+  GOTO: 'choo-slides:goto',
+  DEBUG: 'log:debug'
 }
 
 function mapSlides (slides) {
-    return slides.map( slide => {
-        const shell = SlideShell(slide);
-        Object.assign(shell, slide);
-        return shell;
-    })
+  return slides.map(slide => {
+    const shell = SlideShell(slide)
+    Object.assign(shell, slide)
+    return shell
+  })
 }
 
 function chooSlides (options) {
-    options = options || {};
+  options = options || {}
 
-    assert.equal(typeof options, 'object', 'chooSlides: options should be an object');
+  assert.equal(typeof options, 'object', 'chooSlides: options should be an object')
 
-    options = Object.assign({
-        router: true,
-        slides: []
-    }, options)
+  options = Object.assign({
+    router: true,
+    slides: []
+  }, options)
 
-    if (options.router) {
-        assert.equal(typeof options.router, 'boolean', 'chooSlides: options.router should be a boolean');
-    }
-    if (options.slides) {
-        assert.equal(Array.isArray(options.slides), true, 'chooSlides: options.slides should be an array');
-    }
+  if (options.router) {
+    assert.equal(typeof options.router, 'boolean', 'chooSlides: options.router should be a boolean')
+  }
+  if (options.slides) {
+    assert.equal(Array.isArray(options.slides), true, 'chooSlides: options.slides should be an array')
+  }
 
-    const store = (state, emitter, app) => {
+  const store = (state, emitter, app) => {
         // initialize chooSlides
-        if (!state.chooSlides){
+    if (!state.chooSlides) {
             // Note (dk): we are using app state to store some presentations data.
             // An alt-approach will be to use sessionStorage
-            state.chooSlides = {};
-            state.chooSlides.slides = mapSlides(options.slides);
-            state.chooSlides.current = 0; // the first slide
+      state.chooSlides = {}
+      state.chooSlides.slides = mapSlides(options.slides)
+      state.chooSlides.current = 0 // the first slide
             // add routes
-            if (options.router){
-                app.route('/', options.slideView || SlideView);
-                app.route('/:slideIdx', options.slideView || SlideView);
-                app.route('/404', options.slideView || SlideView);
-            }
+      if (options.router) {
+        app.route('/', options.slideView || SlideView)
+        app.route('/:slideIdx', options.slideView || SlideView)
+        app.route('/404', options.slideView || SlideView)
+      }
             // mix events
-            Object.assign(state.events, events);
-        }
-
-        emitter.on(state.events.DOMCONTENTLOADED, () => {
-            emitter.on(events.FORWARD, forward);
-            emitter.on(events.BACKWARD, backward);
-            emitter.on(events.GOTO, goto);
-        });
-
-        const forward = () => {
-            state.chooSlides.current += 1;
-            emitter.emit(state.events.PUSHSTATE, `/${state.chooSlides.current}`);
-            emitter.emit(events.DEBUG, `choo-slides:forward ${state.chooSlides.current}`);
-        }
-
-        const backward = () => {
-            (state.chooSlides.current <= 0) ? state.chooSlides.current = 0 : state.chooSlides.current -= 1;
-            emitter.emit(state.events.PUSHSTATE, `/${state.chooSlides.current}`);
-            emitter.emit(events.DEBUG, `choo-slides:backward ${state.chooSlides.current}`);
-        }
-
-        const goto = (idx) => {
-            state.chooSlides.current = idx;
-            emitter.emit(state.events.PUSHSTATE, `/${state.chooSlides.current}`);
-            emitter.emit(events.DEBUG, `choo-slides:goto ${state.chooSlides.current}`);
-            emitter.emit('render');
-        }
+      Object.assign(state.events, events)
     }
 
-    store.storeName = 'choo-slides';
+    emitter.on(state.events.DOMCONTENTLOADED, () => {
+      emitter.on(events.FORWARD, forward)
+      emitter.on(events.BACKWARD, backward)
+      emitter.on(events.GOTO, goto)
+    })
 
-    return store;
+    const forward = () => {
+      state.chooSlides.current += 1
+      emitter.emit(state.events.PUSHSTATE, `/${state.chooSlides.current}`)
+      emitter.emit(events.DEBUG, `choo-slides:forward ${state.chooSlides.current}`)
+    }
+
+    const backward = () => {
+      (state.chooSlides.current <= 0) ? state.chooSlides.current = 0 : state.chooSlides.current -= 1
+      emitter.emit(state.events.PUSHSTATE, `/${state.chooSlides.current}`)
+      emitter.emit(events.DEBUG, `choo-slides:backward ${state.chooSlides.current}`)
+    }
+
+    const goto = (idx) => {
+      state.chooSlides.current = idx
+      emitter.emit(state.events.PUSHSTATE, `/${state.chooSlides.current}`)
+      emitter.emit(events.DEBUG, `choo-slides:goto ${state.chooSlides.current}`)
+      emitter.emit('render')
+    }
+  }
+
+  store.storeName = 'choo-slides'
+
+  return store
 }
