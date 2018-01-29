@@ -1,10 +1,14 @@
 {
   "name": "choo-slides",
   "version": "1.0.0",
-  "description": "Create your presentation on a fun way",
+  "description": "Create your presentation in a fun way",
   "main": "index.js",
+  "style": "bundle.css",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint && jest",
+    "build": "browserify --bare -t sheetify/transform -p [ css-extract -o bundle.css ] index.js -o bundle.js",
+    "prepublishOnly": "npm run build",
+    "lint": "standard"
   },
   "keywords": [
     "choo",
@@ -17,5 +21,19 @@
   "dependencies": {
     "bel": "^5.1.5",
     "sheetify": "^6.2.0"
+  },
+  "peerDependencies": {
+    "choo": "6.x"
+  },
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "choo": "^6.7.0",
+    "css-extract": "^1.2.0",
+    "jest": "^22.1.4",
+    "standard": "^10.0.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true
   }
 }
