@@ -1,10 +1,11 @@
+const assert = require('assert');
 const SlideShell = require('./components/slide');
 const SlideView = require('./views/slide');
 const NotFoundView = require('./views/404');
 
 module.exports = chooSlides;
 
-const events = chooSlides.events = {
+const events = exports.events = chooSlides.events = {
     FORWARD: 'choo-slides:fw',
     BACKWARD: 'choo-slides:bw',
     GOTO: 'choo-slides:goto',
@@ -22,10 +23,19 @@ function mapSlides (slides) {
 function chooSlides (options) {
     options = options || {};
 
+    assert.equal(typeof options, 'object', 'chooSlides: options should be an object');
+
     options = Object.assign({
         router: true,
         slides: []
     }, options)
+
+    if (options.router) {
+        assert.equal(typeof options.router, 'boolean', 'chooSlides: options.router should be a boolean');
+    }
+    if (options.slides) {
+        assert.equal(Array.isArray(options.slides), true, 'chooSlides: options.slides should be an array');
+    }
 
     const store = (state, emitter, app) => {
         // initialize chooSlides
