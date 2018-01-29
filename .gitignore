@@ -5,3 +5,4 @@ tmp/
 dist/
 npm-debug.log*
 .DS_Store
+bundle.js
