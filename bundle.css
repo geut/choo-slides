@@ -1,0 +1,18 @@
+._724994c5 .menu {
+        min-height: 0;
+        max-height: 0;
+        transition: max-height 0.4s;
+    }
+
+    ._724994c5 .menu--open {
+        max-height: 25rem;
+    }
+._724994c5 .menu {
+        min-height: 0;
+        max-height: 0;
+        transition: max-height 0.4s;
+    }
+
+    ._724994c5 .menu--open {
+        max-height: 25rem;
+    }
