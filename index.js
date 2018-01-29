@@ -37,20 +37,20 @@ function chooSlides (options) {
   }
 
   const store = (state, emitter, app) => {
-        // initialize chooSlides
+    // initialize chooSlides
     if (!state.chooSlides) {
-            // Note (dk): we are using app state to store some presentations data.
-            // An alt-approach will be to use sessionStorage
+      // Note (dk): we are using app state to store some presentations data.
+      // An alt-approach will be to use sessionStorage
       state.chooSlides = {}
       state.chooSlides.slides = mapSlides(options.slides)
       state.chooSlides.current = 0 // the first slide
-            // add routes
+      // add routes
       if (options.router) {
         app.route('/', options.slideView || SlideView)
         app.route('/:slideIdx', options.slideView || SlideView)
         app.route('/404', options.slideView || SlideView)
       }
-            // mix events
+      // mix events
       Object.assign(state.events, events)
     }
 
