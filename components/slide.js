@@ -1,6 +1,17 @@
 const html = require('bel')
 const Control = require('./control')
 const Note = require('./note')
+const css = require('sheetify')
+
+const slideStyle = css`
+    :host .vh50 {
+        height: 50vh
+    }
+
+    :host .vh100 {
+        height: 100vh
+    }
+`
 
 const Slide = children => (state, emit) => {
   emit(state.events.DEBUG, 'Rendering slide view')
@@ -13,22 +24,22 @@ const Slide = children => (state, emit) => {
     switch (e.keyCode) {
       case 32:
       case 39:
-                // move to the next slide
+        // move to the next slide
         emit(state.events.FORWARD)
         break
       case 37:
-                // move to the previous slide
+        // move to the previous slide
         emit(state.events.BACKWARD)
         break
       default:
-                // do nothing
+        // do nothing
         break
     }
   }
 
   return html`
-            <body class='relative sans-serif' onkeydown=${navigate}>
-                <article class='vh-100 dt w-100 ${children.backgroundColor}'>
+            <body class='${slideStyle} relative sans-serif' onkeydown=${navigate}>
+                <article class='vh100 dt w-100 ${children.backgroundColor}'>
                     <div class='${children.vmiddle ? 'dtc v-mid' : ''} ${children.centered ? 'tc' : ''} ${children.color} ${children.paddings ? 'ph3 ph4-l' : ''}'>
                         ${children(state, emit)}
                     </div>
