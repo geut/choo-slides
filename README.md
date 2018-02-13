@@ -3,10 +3,10 @@
 
 ## What?
 
-Create your presentation in a fun way! 
+Create your presentation in a fun way!
 
-- :ballot_box_with_check: Your slides are just `choo views`. 
-- :ballot_box_with_check: There is a default style and you can use tachyons! 
+- :ballot_box_with_check: Your slides are just `choo views`.
+- :ballot_box_with_check: There is a default style and you can use tachyons!
 - :ballot_box_with_check: Routing is done.
 - :ballot_box_with_check: You can move around emitting: `FORWARD` AND `BACKWARD` builtin events.
 - :ballot_box_with_check: UI Controls included.
@@ -18,7 +18,7 @@ Create your presentation in a fun way!
 
 ## Usage
 
-`choo-slides` works like a plugin. It extends your choo-app adding support for navigating your *slides* like a presentation tool. 
+`choo-slides` works like a plugin. It extends your choo-app adding support for navigating your *slides* like a presentation tool.
 Also, adds a baseline style available via sheetify.
 
 ```
@@ -37,6 +37,7 @@ app.mount('body')
 
 ## Options
 
-WIP
-
+- slides: an `array` of choo views.
+- slideView: a `function` representing a choo view. This can be used to overwrite the original slideView that comes with choo-slides.
+- notFoundView: a `function` representing a choo view. This can be used to overwrite the original "not found" view.
 
