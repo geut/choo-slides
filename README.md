@@ -37,7 +37,7 @@ app.mount('body')
 
 ## Options
 
-- slides: an `array` of choo views.
-- slideView: a `function` representing a choo view. This can be used to overwrite the original slideView that comes with choo-slides.
-- notFoundView: a `function` representing a choo view. This can be used to overwrite the original "not found" view.
+- **slides**: an `array` of choo views.
+- **slideView**: a `function` representing a choo view. This can be used to overwrite the original slideView that comes with choo-slides.
+- **notFoundView**: a `function` representing a choo view. This can be used to overwrite the original "not found" view.
 
