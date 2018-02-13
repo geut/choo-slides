@@ -1,6 +1,7 @@
 const assert = require('assert')
 const SlideShell = require('./components/slide')
 const SlideView = require('./views/slide')
+const NotFoundView = require('./views/404')
 
 module.exports = chooSlides
 
@@ -25,13 +26,9 @@ function chooSlides (options) {
   assert.equal(typeof options, 'object', 'chooSlides: options should be an object')
 
   options = Object.assign({
-    router: true,
     slides: []
   }, options)
 
-  if (options.router) {
-    assert.equal(typeof options.router, 'boolean', 'chooSlides: options.router should be a boolean')
-  }
   if (options.slides) {
     assert.equal(Array.isArray(options.slides), true, 'chooSlides: options.slides should be an array')
   }
@@ -44,12 +41,11 @@ function chooSlides (options) {
       state.chooSlides = {}
       state.chooSlides.slides = mapSlides(options.slides)
       state.chooSlides.current = 0 // the first slide
+      state.chooSlides.notFoundView = options.notFoundView || NotFoundView;
       // add routes
-      if (options.router) {
-        app.route('/', options.slideView || SlideView)
-        app.route('/:slideIdx', options.slideView || SlideView)
-        app.route('/404', options.slideView || SlideView)
-      }
+      app.route('/', options.slideView || SlideView)
+      app.route('/:slideIdx', options.slideView || SlideView)
+      app.route('/404', options.notFoundView || NotFoundView)
       // mix events
       Object.assign(state.events, events)
     }
