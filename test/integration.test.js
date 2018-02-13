@@ -1,6 +1,7 @@
 /* eslint-env jest */
 
 const choo = require('choo')
+const html = require('choo/html')
 const chooSlides = require('../')
 
 var app
@@ -13,8 +14,7 @@ describe('Usage with choo', () => {
   test('use chooSlides', () => {
     expect(() => {
       app.use(chooSlides())
-    })
-        .not.toThrowError()
+    }).not.toThrowError()
   })
 
   test('check chooSlides state', () => {
@@ -34,6 +34,7 @@ describe('Usage with choo', () => {
   })
 
   test('trigger custom events and chooSlides state', () => {
+    expect.assertions(2)
     app.use(chooSlides())
 
     app.emit('DOMContentLoaded')
@@ -43,5 +44,18 @@ describe('Usage with choo', () => {
     app.emit(chooSlides.events.FORWARD)
 
     expect(app.state.chooSlides.current).toBe(1)
+  })
+
+  test('instantiate choo slides with a custom view', () => {
+    expect.assertions(2)
+
+    var customView = () => html`<body><h1>Not found</h1></body>`
+    app.use(chooSlides({ slides: [() => html`<h1>Hola Mundo</h1>`], notFoundView: customView }))
+
+    app.emit('DOMContentLoaded')
+
+    expect(app.state.chooSlides.notFoundView).toBeDefined()
+
+    expect(app.toString('/404').trim()).toEqual(customView().toString())
   })
 })
