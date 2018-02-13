@@ -41,7 +41,7 @@ function chooSlides (options) {
       state.chooSlides = {}
       state.chooSlides.slides = mapSlides(options.slides)
       state.chooSlides.current = 0 // the first slide
-      state.chooSlides.notFoundView = options.notFoundView || NotFoundView;
+      state.chooSlides.notFoundView = options.notFoundView || NotFoundView
       // add routes
       app.route('/', options.slideView || SlideView)
       app.route('/:slideIdx', options.slideView || SlideView)

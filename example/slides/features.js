@@ -12,7 +12,7 @@ const Notes = () => {
 }
 
 const item = (text) => {
-    return html`
+  return html`
         <li class="pa3 pa4-ns bb b--black-10">
           <span class="f3 db lh-copy measure">
             ${text}
@@ -22,7 +22,7 @@ const item = (text) => {
 }
 
 const Features = state => {
-    return html`
+  return html`
     <section class="flex flex-column items-center roboto">
       <h2 class='f2 lh-copy'>FEATURES</h2>
       <ul class="list pl0 fr vh50">
@@ -31,7 +31,7 @@ const Features = state => {
     </section>`
 }
 
-Features.notes = Notes;
+Features.notes = Notes
 Features.title = 'Features'
 Features.centered = false
 Features.backgroundColor = 'bg-light-green'

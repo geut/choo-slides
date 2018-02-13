@@ -1,7 +1,7 @@
 var css = require('sheetify')
 var choo = require('choo')
 var chooSlides = require('../index')
-var myStore = require('./store');
+var myStore = require('./store')
 var mySlides = require('./slides')
 var notFoundView = require('./slides/404')
 

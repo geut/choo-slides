@@ -1,7 +1,7 @@
 const html = require('choo/html')
 
 const item = (text) => {
-    return html`
+  return html`
         <li class="pa3 pa4-ns bb b--black-10">
           <span class="f3 db lh-copy measure-wide">
             ${text}
@@ -11,7 +11,7 @@ const item = (text) => {
 }
 
 const Usage = state => {
-    return html`
+  return html`
     <section class="flex flex-column items-center roboto">
       <h2 class='f2 lh-copy'>USAGE</h2>
       <ol class="list pl0 fr vh50">

@@ -24,13 +24,6 @@ describe('chooSlides creation', () => {
     .toThrowError('chooSlides: options should be an object')
   })
 
-  test('with invalid router option', () => {
-    expect(() => {
-      chooSlides({ router: 'invalid' })
-    })
-    .toThrowError('chooSlides: options.router should be a boolean')
-  })
-
   test('with invalid slides option', () => {
     expect(() => {
       chooSlides({ slides: {} })
