@@ -1,6 +1,8 @@
 # choo-slides
 >  Create your presentation in a fun way
 
+[![Build Status](https://travis-ci.org/geut/choo-slides.svg?branch=master)](https://travis-ci.org/geut/choo-slides)
+
 ## What?
 
 Create your presentation in a fun way!
