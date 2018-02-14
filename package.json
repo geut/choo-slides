@@ -18,7 +18,7 @@
     "tool"
   ],
   "author": "GEUT",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "bel": "^5.1.5",
     "sheetify": "^6.2.0"
