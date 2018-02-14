@@ -1,5 +1,5 @@
 {
-  "name": "choo-slides",
+  "name": "@geut/choo-slides",
   "version": "1.0.0",
   "description": "Create your presentation in a fun way",
   "main": "index.js",
