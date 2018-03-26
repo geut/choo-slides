@@ -2,6 +2,7 @@
 >  Create your presentation in a fun way
 
 [![Build Status](https://travis-ci.org/geut/choo-slides.svg?branch=master)](https://travis-ci.org/geut/choo-slides)
+[![npm version](https://badge.fury.io/js/%40geut%2Fchoo-slides.svg)](https://badge.fury.io/js/%40geut%2Fchoo-slides)
 
 ## What?
 
