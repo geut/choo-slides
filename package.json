@@ -3,12 +3,8 @@
   "version": "1.0.0",
   "description": "Create your presentation in a fun way",
   "main": "index.js",
-  "style": "bundle.css",
   "scripts": {
     "test": "npm run lint && jest",
-    "build": "browserify --bare -t sheetify/transform -p [ css-extract -o bundle.css ] index.js -o bundle.js",
-    "build-alt": "browserify -t sheetify/transform -t babelify --presets [ env, 'targets': {'browsers': ['last 2 versions']}] -p [ css-extract -o bundle.css ] --standalone chooSlides index.js | uglifyjs -c > bundle.js",
-    "prepublishOnly": "npm run build",
     "lint": "standard"
   },
   "keywords": [
@@ -39,5 +35,10 @@
   "jest": {
     "testEnvironment": "node",
     "verbose": true
+  },
+  "browserify": {
+    "transform": [
+      "sheetify"
+    ]
   }
 }
