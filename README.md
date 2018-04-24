@@ -51,7 +51,7 @@ module.exports = slides
 Finally, you should include this file in your choo app, and use it.
 
 ```javascript
-const chooSlides = require('@geut/')
+const chooSlides = require('@geut/choo-slides')
 const slides = require('./slides')
 
 // and then, after creating your choo app
