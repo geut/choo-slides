@@ -9,7 +9,7 @@ const headerStyle = css`
 const slideTitleEl = (slideTitle) => {
   if (!slideTitle) return ''
 
-  return html `
+  return html`
     <h2 class="f6 black-70 fw2 ttu tracked">${slideTitle}</h2>
   `
 }
@@ -17,7 +17,7 @@ const slideTitleEl = (slideTitle) => {
 const headerChildren = (children) => {
   if (!children) return ''
 
-  return children();
+  return children()
 }
 
 /*
@@ -28,7 +28,6 @@ const headerChildren = (children) => {
  *  - @slideTitle: String - current slide title. OPTIONAL
  */
 const Header = (state) => {
-
   return html`
     <header class='${headerStyle} pl0 pr0 pl4-ns pr4-ns pv4 pv5-ns'>
       ${headerChildren(state.headerChildren)}
@@ -38,4 +37,4 @@ const Header = (state) => {
   `
 }
 
-module.exports = Header;
+module.exports = Header
