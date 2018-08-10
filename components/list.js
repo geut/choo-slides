@@ -3,7 +3,7 @@ const ListItem = require('./listItem')
 
 const parseItem = itemData => {
   console.log('parseItem', itemData)
-  if (itemData.content) return itemData;
+  if (itemData.content) return itemData
 
   return { content: itemData }
 }
