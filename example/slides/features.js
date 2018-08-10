@@ -1,4 +1,5 @@
 const html = require('choo/html')
+const { list, headline } = require('../../components')
 
 const Notes = () => {
   return html`
@@ -11,23 +12,12 @@ const Notes = () => {
   `
 }
 
-const item = (text) => {
-  return html`
-        <li class="pa3 pa4-ns bb b--black-10">
-          <span class="f3 db lh-copy measure">
-            ${text}
-          </span>
-        </li>
-    `
-}
-
 const Features = state => {
+  const { features } = state
   return html`
     <section class="flex flex-column items-center roboto">
-      <h2 class='f2 lh-copy'>FEATURES</h2>
-      <ul class="list pl0 fr vh50">
-        ${state.features.map(item)}
-      </ul>
+      ${headline({title: 'Features', level: 2, classes: 'f2 tc'})}
+      ${list({children: features, classes: 'list pl0 fr vh50'})}
     </section>`
 }
 
