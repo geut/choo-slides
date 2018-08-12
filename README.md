@@ -25,14 +25,10 @@ You can quickly create a project using [create-choo-app](https://github.com/choo
 From there, I usually create a `slides` folder. This is where your slides live and your slides are just [choo views](https://choo.io/docs/views). For example:
 
 ```javascript
-var html = require('choo/html')
+var { headline } = require('@geut/choo-slides/components')
 
-module.exports = function (state, emit) {
-  return html`
-    <h1>
-    THIS IS A BOLD STATEMENT. LOL.
-    </h1>
-  `
+module.exports = function () {
+  return headline({ title: 'Your slide title' })
 }
 ```
 
@@ -48,7 +44,7 @@ const slides = [
 module.exports = slides
 ```
 
-Finally, you should include this file in your choo app, and use it.
+Finally, you should include this file in your choo app and `use` it.
 
 ```javascript
 const chooSlides = require('@geut/choo-slides')
@@ -82,6 +78,21 @@ app.mount('body')
 - **slides**: an `array` of choo views.
 - **slideView**: a `function` representing a choo view. This can be used to overwrite the original slideView that comes with choo-slides.
 - **notFoundView**: a `function` representing a choo view. This can be used to overwrite the original "not found" view.
+
+## Components :new:
+
+Some default components are available under: `@geut/choo-slides/components`. Currently you can find:
+
+|  component  | HTML Element |
+| ----------- |:------------:|
+| headline    | h1 .. h6     |
+|  text       | p            |
+|  list       | ul           |
+|  listItem   | li           |
+
+> Checkout the [example](./example/) to see components in action.
+
+_Note:_ this is just a temporal solution around componentization for `choo-slides`.
 
 ## License
 
