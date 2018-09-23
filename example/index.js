@@ -1,6 +1,6 @@
 var css = require('sheetify')
-var choo = require('choo')
-var chooSlides = require('@geut/choo-slides')
+var choo = require('../node_modules/choo') // using local choo version
+var chooSlides = require('../')
 var myStore = require('./store')
 var mySlides = require('./slides')
 var notFoundView = require('./slides/404')
@@ -18,6 +18,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(myStore)
 app.use(chooSlides({ slides: mySlides, notFoundView: notFoundView }))
+
+window.chooExample = app
 
 if (!module.parent) app.mount('body')
 else module.exports = app
